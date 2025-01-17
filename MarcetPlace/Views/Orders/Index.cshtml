@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MarketPlace.Models.order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a href="@Url.Action("Create", "orders")">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.customer.fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paymentmethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deliveryaddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer.fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentmethod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deliveryaddress)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.orderid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.orderid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.orderid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

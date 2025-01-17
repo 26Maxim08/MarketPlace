@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MarketPlace.Models.customer>
+
+@{
+    ViewData["Title"] = "Покупатели";
+}
+
+<h1>Покупатели</h1>
+
+<p>
+    <a href="@Url.Action("Create", "customers")">Создать нового</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastname)
+                </td>   
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.customerid">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.customerid">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
